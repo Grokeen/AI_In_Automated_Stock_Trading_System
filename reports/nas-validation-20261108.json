@@ -1,5 +1,11 @@
 {
   "validated_at": "2026-11-08T03:29:30+09:00",
+  "source_publication": {
+    "repository": "https://github.com/Grokeen/AI_In_Automated_Stock_Trading_System",
+    "branch": "main",
+    "source_commit": "99aa8a2549be663fd07bd2fbfb67bf5eb38e7b00",
+    "remote_head_verified_at": "2026-11-08T03:33:24+09:00"
+  },
   "hardware": {
     "model": "Raspberry Pi 4",
     "memory_mib": 3794,
