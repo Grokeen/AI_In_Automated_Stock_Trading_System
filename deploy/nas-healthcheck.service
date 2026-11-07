@@ -1,0 +1,19 @@
+# Created 2026-11-08 03:22 KST: record NAS health without trading or changing NAS files.
+[Unit]
+Description=Raspberry Pi NAS health snapshot
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/nas-trading-tools/healthcheck.py --output /var/lib/nas-healthcheck/status.json
+StateDirectory=nas-healthcheck
+StateDirectoryMode=0700
+UMask=0077
+Nice=15
+CPUQuota=25%
+LimitAS=256M
+TimeoutStartSec=90
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes

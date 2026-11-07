@@ -1,0 +1,12 @@
+# Created 2026-11-08 03:22 KST: all future trading workers share at most one CPU core.
+[Unit]
+Description=NAS trading workload resource budget
+
+[Slice]
+CPUAccounting=yes
+CPUQuota=100%
+CPUWeight=20
+IOAccounting=yes
+IOWeight=20
+TasksAccounting=yes
+TasksMax=64

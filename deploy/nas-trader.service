@@ -1,0 +1,33 @@
+# Created 2026-11-08 03:22 KST: inactive execution template for a future broker application.
+[Unit]
+Description=NAS trading application
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/opt/nas-trader/main.py
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=nas-trader
+StateDirectoryMode=0700
+WorkingDirectory=/var/lib/nas-trader
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/etc/nas-trader/trader.env
+ExecStart=/usr/bin/python3 -u /opt/nas-trader/main.py
+Slice=nas-trading.slice
+Nice=10
+LimitAS=768M
+LimitCORE=0
+UMask=0077
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=30
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target

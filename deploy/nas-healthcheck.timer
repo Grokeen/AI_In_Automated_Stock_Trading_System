@@ -1,0 +1,12 @@
+# Created 2026-11-08 03:22 KST: one small snapshot every five minutes.
+[Unit]
+Description=Periodically check Raspberry Pi NAS health
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Unit=nas-healthcheck.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+# Created 2026-11-08 03:22 KST: keep credentials and generated files out of source control.
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+backups/
+*.tar.gz

@@ -1,0 +1,2 @@
+# Created 2026-11-08 03:32 KST: preserve Linux line endings when editing through Windows SMB.
+* text=auto eol=lf

@@ -1,0 +1,59 @@
+{
+  "validated_at": "2026-11-08T03:29:30+09:00",
+  "hardware": {
+    "model": "Raspberry Pi 4",
+    "memory_mib": 3794,
+    "kernel_architecture": "aarch64",
+    "userland_architecture": "armhf",
+    "userland_bits": 32,
+    "openmediavault_version": "6.4.9-1",
+    "docker_version": "24.0.4",
+    "memory_cgroup_available": false
+  },
+  "before": {
+    "journal_mib": 808,
+    "var_log_mib": 812,
+    "available_memory_mib": 2692
+  },
+  "after": {
+    "journal_mib": 32,
+    "var_log_mib": 36,
+    "folder2ram_persistent_log_mib": 37,
+    "available_memory_mib": 3460
+  },
+  "historical_journal_backup": {
+    "archive": "/var/backups/nas-trading-maintenance/20261108T032602+0900/archived-journals.tar.gz",
+    "archived_files": 98,
+    "all_member_sha256_verified": true,
+    "compressed_bytes": 23829998,
+    "sha256": "a90cabebbab10418a7638b20c86efffb8963dd97e4337eb3e3030a6e91204216"
+  },
+  "deployment": {
+    "manifest": "/var/backups/nas-trading-maintenance/20261108T032750+0900/manifest.json",
+    "completed": true,
+    "idempotent_reapply_changes": 0,
+    "nas_tests_passed": 9,
+    "python_compile_passed": true,
+    "systemd_unit_verification_passed": true,
+    "healthcheck_result": "success",
+    "healthcheck_interval_minutes": 5,
+    "nas_services_active": ["smbd", "openmediavault-engined", "nginx", "docker"],
+    "reboot_performed": false,
+    "trading_service_enabled": false
+  },
+  "resource_smoke_test": {
+    "exit_code": 0,
+    "slice_cpu_max": "100000 100000",
+    "slice_pids_max": "64",
+    "per_process_address_space_soft_bytes": 805306368,
+    "per_process_address_space_hard_bytes": 805306368,
+    "aggregate_memory_limit_enforced": false
+  },
+  "unresolved": [
+    "Two shared data volumes remain 99.88% and 96.13% full; no user files were moved or deleted.",
+    "Broker selection, brokerage API integration and actual trading application are pending.",
+    "The memory cgroup controller is unavailable; LimitAS is not an aggregate resident memory limit.",
+    "Existing systemd-networkd-wait-online failure remains; network and boot settings were not changed.",
+    "The workspace .git directory remains incomplete with an existing config.lock; publishing uses isolated Git metadata without modifying it."
+  ]
+}
