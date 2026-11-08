@@ -3,10 +3,12 @@
 | 항목 | 내용 |
 |---|---|
 | 프로젝트 | AI_In_Automated_Stock_Trading_System |
-| 문서 버전 | 1.0 |
+| 문서 버전 | 1.1 |
 | 작성 | 2026-11-08 11:16 KST |
+| 수정 | 2026-11-08 12:53 KST — 역할별 담당과 인계 기준 연결 |
 | 상태 | 기존 구현에 대한 기술 인계 + 미구현 영역의 제안 설계 |
 | 요청 범위 | [프로젝트 요청서](PROJECT_REQUEST.md) |
+| 역할·인계 | [역할별 업무 분장표](WORK_ALLOCATION.md) |
 | 현재 구현 근거 | [README](../README.md), [검증 보고](../reports/nas-validation-20261108.json), `nas/`, `deploy/`, `tests/` |
 
 ## 1. 문서를 해석하는 기준
@@ -192,17 +194,19 @@ CREATED → APPROVED → SUBMITTING → ACKNOWLEDGED → PARTIALLY_FILLED → FI
 
 다음은 여러 작업자가 나누어 진행할 수 있는 작업 단위다. **현재 담당자가 배정되었다는 뜻은 아니다.** 착수자는 작업 ID, 담당 파일, 의존성, 완료 근거를 작업 기록에 남긴다.
 
-| ID | 작업 | 주요 파일 범위 제안 | 의존성 | 완료 근거 |
-|---|---|---|---|---|
-| T0 | 환경·공식 API 조건 재확인 | 환경 기록·정의서 | 없음 | Python·아키텍처·저장소·공식 조건 확인 기록 |
-| T1 | 설정·공통 모델·가짜 증권사 | `trading/config.py`, `trading/broker/base.py`, `fake.py` | T0 | 키 없이 offline 실행, 환경 불일치·비밀정보 제외 검증 |
-| T2 | KIS 어댑터 | `trading/broker/kis.py` | T1 | 가짜 HTTP 응답 테스트, 키 준비 후 모의 조회 검증 |
-| T3 | 영속 저장·주문 상태·대사 | `trading/storage.py`, `orders.py` | T1 | 재시작·부분체결·결과 불명·중복 방지 테스트 |
-| T4 | 위험 한도·전략 인터페이스 | `trading/risk.py`, `strategies/` | T1 | 한도 초과·미설정·중지 시 주문 차단 검증 |
-| T5 | 시세·스케줄·운영 상태 | `trading/market_data.py`, `status.py` | T1, T2 | 오래된 시세·휴장·재연결·상태 출력 검증 |
-| T6 | 통합·모의투자 검증 | `trading/main.py`, 통합 테스트 | T2~T5 | 모의 주문·체결·취소·장애 복구 증거 |
-| T7 | NAS 배포·회귀·복구 | 배포 도구·운영 문서 | T6 | NAS 실기 실행, 기존 파일 공유 정상, 자원·복구 확인 |
-| T8 | AI 확장 설계 | 모델·데이터·검증 계획 | T6 이후 | 오프라인 성능과 운영 비용·자원 요구 근거 |
+역할별 상세 업무·산출물·검토·첫 지시는 [역할별 업무 분장표](WORK_ALLOCATION.md)를 따른다. 아래의 주담당은 역할 기준이며, 디자인·감사·문서는 여러 작업에 걸쳐 독립 업무를 수행한다.
+
+| ID | 작업 | 주담당 역할 | 주요 파일 범위 제안 | 의존성 | 완료 근거 |
+|---|---|---|---|---|---|
+| T0 | 환경·공식 API 조건 재확인 | OPS, API 근거는 RES 지원 | 환경 기록·정의서 | 없음 | Python·아키텍처·저장소·공식 조건 확인 기록 |
+| T1 | 설정·공통 모델·가짜 증권사 | DEV | `trading/config.py`, `trading/broker/base.py`, `fake.py` | T0 | 키 없이 offline 실행, 환경 불일치·비밀정보 제외 검증 |
+| T2 | KIS 어댑터 | DEV | `trading/broker/kis.py` | T1 | 가짜 HTTP 응답 테스트, 키 준비 후 모의 조회 검증 |
+| T3 | 영속 저장·주문 상태·대사 | DEV | `trading/storage.py`, `orders.py` | T1 | 재시작·부분체결·결과 불명·중복 방지 테스트 |
+| T4 | 위험 한도·전략 인터페이스 | DEV | `trading/risk.py`, `strategies/` | T1 | 한도 초과·미설정·중지 시 주문 차단 검증 |
+| T5 | 시세·스케줄·운영 상태 | DEV, 정보 설계는 DES 지원 | `trading/market_data.py`, `status.py` | T1, T2 | 오래된 시세·휴장·재연결·상태 출력 검증 |
+| T6 | 통합·모의투자 검증 | DEV, 독립 검토는 AUD | `trading/main.py`, 통합 테스트 | T2~T5 | 모의 주문·체결·취소·장애 복구 증거 |
+| T7 | NAS 배포·회귀·복구 | OPS, 안내는 DOC 지원 | 배포 도구·운영 문서 | T6 | NAS 실기 실행, 기존 파일 공유 정상, 자원·복구 확인 |
+| T8 | AI 확장 설계 | RES | 모델·데이터·검증 계획 | T6 이후 | 오프라인 성능과 운영 비용·자원 요구 근거 |
 
 공통 모델·DB 스키마·설정 계약 변경은 관련 작업자와 먼저 조율한다. 별도 checkout이나 브랜치를 사용할 수 있으면 활용하며, 같은 SMB 소스 파일을 동시에 덮어쓰지 않는다. `UPDATE.md`와 `OWERORDER.md`는 기존 기록을 보존하면서 본인 작업을 추가한다.
 

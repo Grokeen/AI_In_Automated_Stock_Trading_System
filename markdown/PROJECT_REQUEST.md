@@ -3,11 +3,12 @@
 | 항목 | 내용 |
 |---|---|
 | 프로젝트 | AI_In_Automated_Stock_Trading_System |
-| 문서 버전 | 1.0 |
+| 문서 버전 | 1.1 |
 | 작성 | 2026-11-08 11:16 KST |
+| 수정 | 2026-11-08 12:53 KST — 역할별 업무 분장 연결 |
 | 목적 | 다른 Codex 작업자가 현재 맥락을 이해하고 개발을 이어갈 수 있는 요청 범위와 완료 기준 제공 |
 | 저장소 | [Grokeen/AI_In_Automated_Stock_Trading_System](https://github.com/Grokeen/AI_In_Automated_Stock_Trading_System) |
-| 함께 읽을 문서 | [프로젝트 정의서](PROJECT_DEFINITION.md), [README](../README.md), [개발 기록](../UPDATE.md), [작업 보고](../OWERORDER.md) |
+| 함께 읽을 문서 | [프로젝트 정의서](PROJECT_DEFINITION.md), [역할별 업무 분장표](WORK_ALLOCATION.md), [README](../README.md), [개발 기록](../UPDATE.md), [작업 보고](../OWERORDER.md) |
 
 ## 1. 요청 배경과 목표
 
@@ -116,4 +117,6 @@
 
 ## 8. 다음 작업자에게 줄 첫 작업 지시
 
-> `markdown/PROJECT_REQUEST.md`와 `markdown/PROJECT_DEFINITION.md`를 읽고, 현재 환경과 미구현 범위를 확인한 뒤 정의서의 T0·T1부터 진행하세요. KIS를 우선 후보로 두되, 계좌와 API 키가 없으면 가짜 응답 기반으로 설정·인증 인터페이스·주문 기록·위험 한도 테스트를 먼저 구현하세요. 기본 실행 모드는 모의투자로 두고 실제 주문은 실행하지 마세요. 변경·검증 결과를 UPDATE.md와 OWERORDER.md에 기록하고 검증 후 GitHub에 반영하세요.
+업무는 [역할별 업무 분장표](WORK_ALLOCATION.md)에 따라 배포관리, 디자인, 개발자, 감사·요청사항 평가·프로젝트 평가, 연구·시장분석·프로젝트 평가, 문서작업으로 나눈다. 감사는 요구 충족·구현 품질을, 연구는 시장·비용·전략의 타당성을 평가한다. 역할별 실제 담당자는 별도로 기록한다.
+
+> `markdown/PROJECT_REQUEST.md`, `markdown/PROJECT_DEFINITION.md`, `markdown/WORK_ALLOCATION.md`와 최근 UPDATE.md를 읽고 맡은 역할의 첫 업무부터 진행하세요. 개발자는 환경 확인을 반영해 설정·공통 모델·가짜 증권사부터 구현하고, 다른 역할은 분장표의 조사·설계·검증·배포 준비·문서를 진행하세요. KIS는 우선 후보이며 계좌·키가 없어도 가능한 작업은 계속 진행하세요. 기본 API 실행 모드는 모의투자로 두고 실제 주문은 실행하지 마세요. 변경·검증 결과를 UPDATE.md와 OWERORDER.md에 기록하고 배포관리 담당과 GitHub 반영·인계를 조율하세요.
