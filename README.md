@@ -8,8 +8,10 @@ AI 모델을 활용한 주식 자동매매 시스템입니다.
 - [프로젝트 정의서](markdown/PROJECT_DEFINITION.md): 현재 구현, NAS 환경, 제안 구조, 모듈·주문 복구 계약, 작업 분해와 검증·배포 방법.
 - [역할별 업무 분장표](markdown/WORK_ALLOCATION.md): 배포관리·디자인·개발·감사·연구·문서의 담당 범위, 산출물, 검토·인계 순서와 첫 작업 지시.
 - [개발 방법 정의서](markdown/DEVELOPMENT_METHOD.md): 작은 기능 단위 반복 개발, 인터페이스 설계, offline→paper→NAS 검증, 테스트·Git·배포·완료 기준.
+- [새 작업자 시작 안내](markdown/START_HERE.md): 권장 읽기 순서, 개발·검증·인계 경로.
+- [팀 업무 현황](markdown/TEAM_STATUS.md): 확인된 담당자, R1 업무 상태·근거·다음 조치.
 
-다음 작업자는 위 네 문서와 최근 `UPDATE.md`를 먼저 확인하고 맡은 역할의 업무부터 진행합니다. 한국투자증권 KIS는 우선 연동 후보이며 계좌·API 키 준비 여부와 실제 연동은 미확인입니다.
+새 작업자는 [시작 안내](markdown/START_HERE.md)와 [팀 현황](markdown/TEAM_STATUS.md)을 함께 확인하세요. 역할별 실제 상태는 제출 근거에 따라 갱신되며, 기존 NAS 검증은 매매 기능 검증이 아닙니다. 한국투자증권 KIS는 우선 연동 후보이며 계좌·API 키 준비 여부와 실제 연동은 미확인입니다.
 
 사용자 지정 담당자 **CD1은 감사 및 프로젝트 관리**를 맡습니다. 요구 충족·검증 근거를 평가하고 진척·우선순위·의존성·이슈·인계를 조율합니다. 상세 책임과 담당자 기록은 역할별 업무 분장표에서 관리합니다.
 
@@ -86,3 +88,4 @@ Samba, OMV 엔진, nginx, Docker가 모두 정상 동작하며 상태 점검 타
 - [systemd journal 용량·보관 설정](https://www.freedesktop.org/software/systemd/man/249/journald.conf.html)
 - [systemd CPU 및 cgroup 자원 제어](https://www.freedesktop.org/software/systemd/man/251/systemd.resource-control.html)
 - [systemd 프로세스별 실행 제한](https://www.freedesktop.org/software/systemd/man/249/systemd.exec.html)
+
