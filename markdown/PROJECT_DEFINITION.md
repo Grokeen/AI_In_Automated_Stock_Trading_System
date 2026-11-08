@@ -3,12 +3,13 @@
 | 항목 | 내용 |
 |---|---|
 | 프로젝트 | AI_In_Automated_Stock_Trading_System |
-| 문서 버전 | 1.1 |
+| 문서 버전 | 1.2 |
 | 작성 | 2026-11-08 11:16 KST |
-| 수정 | 2026-11-08 12:53 KST — 역할별 담당과 인계 기준 연결 |
+| 수정 | 2026-11-08 13:05 KST — 개발 방법과 검증 절차 연결 |
 | 상태 | 기존 구현에 대한 기술 인계 + 미구현 영역의 제안 설계 |
 | 요청 범위 | [프로젝트 요청서](PROJECT_REQUEST.md) |
 | 역할·인계 | [역할별 업무 분장표](WORK_ALLOCATION.md) |
+| 개발 절차 | [개발 방법 정의서](DEVELOPMENT_METHOD.md) |
 | 현재 구현 근거 | [README](../README.md), [검증 보고](../reports/nas-validation-20261108.json), `nas/`, `deploy/`, `tests/` |
 
 ## 1. 문서를 해석하는 기준
@@ -221,6 +222,8 @@ CREATED → APPROVED → SUBMITTING → ACKNOWLEDGED → PARTIALLY_FILLED → FI
 별도 bare clone을 Git 메타데이터로 사용할 때는 작업 파일을 추가하기 전에 **그 별도 메타데이터의 index를 기준 커밋으로 채운다**. 예를 들어 `git --git-dir=<별도 Git 경로> read-tree HEAD`를 사용하며 작업 파일을 변경하는 `-u` 옵션은 사용하지 않는다. 빈 index에서 일부 문서만 추가하면 기존 소스가 삭제된 커밋이 만들어질 수 있다. 커밋 전 변경 파일 목록이 의도한 목록과 정확히 일치하는지 확인한다. 기존 공유 폴더의 미완성 `.git`에서 이 작업을 수행하지 않는다.
 
 ## 10. 검증·배포·복구
+
+개발의 반복 단위, 인터페이스 우선 설계, 변경별 검사, 공동 Git 작업과 완료 기준은 [개발 방법 정의서](DEVELOPMENT_METHOD.md)를 따른다. 아래는 현재 운영 도구와 목표 시스템에 대한 구체적인 검증·배포 기준이다.
 
 ### 10.1 기존 검증 명령
 
